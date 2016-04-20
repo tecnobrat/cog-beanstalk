@@ -1,0 +1,51 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "volumes": [],
+  "containerDefinitions": [
+    {
+      "name": "cog",
+      "image": "operable/cog:0.3.1",
+      "essential": true,
+      "memory": 512,
+      "entryPoint": ["elixir --no-halt --name cog@127.0.0.1 --no-halt -S mix do ecto.create, ecto.migrate, phoenix.server"]
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 4000
+        },
+        {
+          "hostPort": 1883,
+          "containerPort": 1883
+        }
+      ],
+      "environment": [
+        { "name": "COG_MQTT_HOST", "value": "0.0.0.0" }
+      ],
+      "logConfiguration": {
+        "logDriver": "syslog",
+        "options": {
+          "syslog-address": "udp://rsyslog.articulate.private:514",
+          "tag": "cog"
+        }
+      }
+    },
+    {
+      "name": "relay",
+      "image": "operable/relay:0.3.1",
+      "essential": true,
+      "memory": 512,
+      "entryPoint": ["scripts/wait-for-it.sh -s -t 0 -h cog -p 1883 -- elixir --no-halt --name relay@127.0.0.1 -S mix"]
+      "environment": [
+        { "name": "COG_MQTT_HOST", "value": "cog" }
+      ],
+      "links": ["cog"],
+      "logConfiguration": {
+        "logDriver": "syslog",
+        "options": {
+          "syslog-address": "udp://rsyslog.articulate.private:514",
+          "tag": "cog-relay"
+        }
+      }
+    }
+  ]
+}
