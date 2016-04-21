@@ -31,10 +31,9 @@
     },
     {
       "name": "relay",
-      "image": "operable/relay:0.3.1",
+      "image": "articulate/docker-relay:0.3.1",
       "essential": true,
       "memory": 384,
-      "entryPoint": ["scripts/wait-for-it.sh", "-s", "-t", "0", "-h", "cog", "-p", "1883", "--", "elixir", "--no-halt", "--name", "relay@127.0.0.1", "-S", "mix"],
       "environment": [
         { "name": "COG_MQTT_HOST", "value": "cog" }
       ],
