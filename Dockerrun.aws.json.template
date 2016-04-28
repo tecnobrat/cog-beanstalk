@@ -24,7 +24,7 @@
       "logConfiguration": {
         "logDriver": "syslog",
         "options": {
-          "syslog-address": "udp://rsyslog.articulate.private:514",
+          "syslog-address": "udp://<RSYSLOG_HOSTNAME>:514",
           "tag": "cog"
         }
       }
@@ -41,7 +41,7 @@
       "logConfiguration": {
         "logDriver": "syslog",
         "options": {
-          "syslog-address": "udp://rsyslog.articulate.private:514",
+          "syslog-address": "udp://<RSYSLOG_HOSTNAME>:514",
           "tag": "cog-relay"
         }
       }
