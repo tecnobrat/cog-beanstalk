@@ -7,7 +7,7 @@
         "sourcePath": "/var/run/docker.sock"
       }
     }
-  ]
+  ],
   "containerDefinitions": [
     {
       "name": "cog",
