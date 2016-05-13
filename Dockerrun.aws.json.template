@@ -28,14 +28,7 @@
       "environment": [
         { "name": "COG_MQTT_HOST", "value": "0.0.0.0" },
         { "name": "RELAY_ID", "value": "00000000-0000-0000-0000-000000000000" }
-      ],
-      "logConfiguration": {
-        "logDriver": "syslog",
-        "options": {
-          "syslog-address": "udp://<RSYSLOG_HOSTNAME>:514",
-          "tag": "cog"
-        }
-      }
+      ]
     },
     {
       "name": "relay",
@@ -52,13 +45,6 @@
         { "name": "RELAY_DYNAMIC_CONFIG_ROOT", "value": "/tmp/bundle_configs" }
       ],
       "links": ["cog"],
-      "logConfiguration": {
-        "logDriver": "syslog",
-        "options": {
-          "syslog-address": "udp://<RSYSLOG_HOSTNAME>:514",
-          "tag": "cog-relay"
-        }
-      },
       "mountPoints": [
         {
           "sourceVolume": "sock",
