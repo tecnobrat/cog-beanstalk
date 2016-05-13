@@ -21,8 +21,12 @@
           "containerPort": 4000
         },
         {
-          "hostPort": 1883,
-          "containerPort": 1883
+          "hostPort": 4001,
+          "containerPort": 4001
+        },
+        {
+          "hostPort": 4002,
+          "containerPort": 4002
         }
       ],
       "environment": [
@@ -38,6 +42,7 @@
       "memory": 384,
       "privileged": true,
       "environment": [
+        { "name": "COG_API_PORT", "value": "443" },
         { "name": "RELAY_ID", "value": "00000000-0000-0000-0000-000000000000" },
         { "name": "RELAY_COG_REFRESH_INTERVAL", "value": "30s" },
         { "name": "RELAY_DOCKER_CLEAN_INTERVAL", "value": "1m" },
