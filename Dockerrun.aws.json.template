@@ -1,13 +1,20 @@
 {
   "AWSEBDockerrunVersion": 2,
-  "volumes": [],
+  "volumes": [
+    {
+      "name": "sock",
+      "host": {
+        "sourcePath": "/var/run/docker.sock"
+      }
+    }
+  ]
   "containerDefinitions": [
     {
       "name": "cog",
       "image": "operable/cog:0.6",
       "essential": true,
       "memory": 384,
-      "entryPoint": ["elixir", "--no-halt", "--name", "cog@127.0.0.1", "--no-halt", "-S", "mix", "do", "ecto.create,", "ecto.migrate,", "phoenix.server"],
+      "entryPoint": ["/home/operable/cog/scripts/docker-start"],
       "portMappings": [
         {
           "hostPort": 80,
@@ -32,9 +39,11 @@
     },
     {
       "name": "relay",
-      "image": "articulate/docker-relay:0.3.1",
+      "image": "operable/relay:0.6",
       "essential": true,
+      "entryPoint": ["/usr/local/bin/relay"],
       "memory": 384,
+      "privileged": true,
       "environment": [
         { "name": "RELAY_ID", "value": "00000000-0000-0000-0000-000000000000" },
         { "name": "RELAY_COG_REFRESH_INTERVAL", "value": "30s" },
@@ -49,7 +58,13 @@
           "syslog-address": "udp://<RSYSLOG_HOSTNAME>:514",
           "tag": "cog-relay"
         }
-      }
+      },
+      "mountPoints": [
+        {
+          "sourceVolume": "sock",
+          "containerPath": "/var/run/docker.sock"
+        }
+      ]
     }
   ]
 }
