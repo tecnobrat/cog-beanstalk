@@ -4,7 +4,7 @@
   "containerDefinitions": [
     {
       "name": "cog",
-      "image": "operable/cog:0.3.1",
+      "image": "operable/cog:0.6",
       "essential": true,
       "memory": 384,
       "entryPoint": ["elixir", "--no-halt", "--name", "cog@127.0.0.1", "--no-halt", "-S", "mix", "do", "ecto.create,", "ecto.migrate,", "phoenix.server"],
@@ -19,7 +19,8 @@
         }
       ],
       "environment": [
-        { "name": "COG_MQTT_HOST", "value": "0.0.0.0" }
+        { "name": "COG_MQTT_HOST", "value": "0.0.0.0" },
+        { "name": "RELAY_ID", "value": "00000000-0000-0000-0000-000000000000" }
       ],
       "logConfiguration": {
         "logDriver": "syslog",
@@ -35,7 +36,11 @@
       "essential": true,
       "memory": 384,
       "environment": [
-        { "name": "COG_MQTT_HOST", "value": "cog" }
+        { "name": "RELAY_ID", "value": "00000000-0000-0000-0000-000000000000" },
+        { "name": "RELAY_COG_REFRESH_INTERVAL", "value": "30s" },
+        { "name": "RELAY_DOCKER_CLEAN_INTERVAL", "value": "1m" },
+        { "name": "RELAY_COG_HOST", "value": "cog" },
+        { "name": "RELAY_DYNAMIC_CONFIG_ROOT", "value": "/tmp/bundle_configs" }
       ],
       "links": ["cog"],
       "logConfiguration": {
