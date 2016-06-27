@@ -11,7 +11,7 @@
   "containerDefinitions": [
     {
       "name": "cog",
-      "image": "operable/cog:0.6",
+      "image": "operable/cog:0.8",
       "essential": true,
       "memory": 384,
       "entryPoint": ["/home/operable/cog/scripts/docker-start"],
@@ -36,7 +36,7 @@
     },
     {
       "name": "relay",
-      "image": "operable/relay:0.6",
+      "image": "operable/relay:0.8",
       "essential": true,
       "entryPoint": ["/usr/local/bin/relay"],
       "memory": 384,
