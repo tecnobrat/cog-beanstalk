@@ -32,7 +32,14 @@
       "environment": [
         { "name": "COG_MQTT_HOST", "value": "0.0.0.0" },
         { "name": "RELAY_ID", "value": "00000000-0000-0000-0000-000000000000" }
-      ]
+      ],
+      "logConfiguration": {
+        "logDriver": "syslog",
+        "options": {
+          "syslog-address": "udp://<RSYSLOG_HOSTNAME>:514",
+          "tag": "cog-main"
+        }
+      }
     },
     {
       "name": "relay",
@@ -55,7 +62,14 @@
           "sourceVolume": "sock",
           "containerPath": "/var/run/docker.sock"
         }
-      ]
+      ],
+      "logConfiguration": {
+        "logDriver": "syslog",
+        "options": {
+          "syslog-address": "udp://<RSYSLOG_HOSTNAME>:514",
+          "tag": "cog-relay"
+        }
+      }
     }
   ]
 }
