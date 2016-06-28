@@ -1,0 +1,11 @@
+aws_account_id = "012345678901"
+aws_profile = "default"
+aws_region = "us-east-1"
+domain_count = 0
+relay_cog_token = "SuperSecret123"
+root_domain = "tecnobrat.me"
+route53_zone_id = "A0AA0AAA0AAA0A"
+slack_api_token = "xoxb-00000000000-abcdefghijklmnopqrstuvwx"
+vpc_default_security_group = "sg-b1b1b1b1"
+vpc_id = "vpc-a1a1a1a1"
+vpc_subnets = "subnet-22222222,subnet-22222222"
