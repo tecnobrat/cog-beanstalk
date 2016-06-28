@@ -1,12 +1,19 @@
+# AWS Account Info
 aws_account_id = "012345678901"
-aws_profile = "default"
+aws_profile = "default" # profile found in your ~/.aws/credentials file
 aws_region = "us-east-1"
-domain_count = 0
-ec2_key_name = "none"
-relay_cog_token = "SuperSecret123"
+ec2_key_name = "none" # You must already have a SSH key created in AWS
+
+# Domain details, see README
+domain_count = 0 # Setting to 1 enables creation of route53 record
 root_domain = "tecnobrat.me"
 route53_zone_id = "A0AA0AAA0AAA0A"
-slack_api_token = "xoxb-00000000000-abcdefghijklmnopqrstuvwx"
+
+# VPC Details
 vpc_default_security_group = "sg-b1b1b1b1"
 vpc_id = "vpc-a1a1a1a1"
 vpc_subnets = "subnet-22222222,subnet-22222222"
+
+# Cog Secrets
+relay_cog_token = "SuperSecret123"
+slack_api_token = "xoxb-00000000000-abcdefghijklmnopqrstuvwx"
