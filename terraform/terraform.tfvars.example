@@ -2,6 +2,7 @@ aws_account_id = "012345678901"
 aws_profile = "default"
 aws_region = "us-east-1"
 domain_count = 0
+ec2_key_name = "none"
 relay_cog_token = "SuperSecret123"
 root_domain = "tecnobrat.me"
 route53_zone_id = "A0AA0AAA0AAA0A"

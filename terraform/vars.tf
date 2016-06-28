@@ -5,7 +5,7 @@ variable "aws_region" {}
 variable "aws_account_id" {}
 
 # Instance Settings
-variable "ec2_key_name" { default = "ec2_key" }
+variable "ec2_key_name" { }
 variable "instance_type" { default = "t2.micro" }
 
 # Postgres Settings

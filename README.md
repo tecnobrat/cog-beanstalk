@@ -6,12 +6,13 @@ Simply clone down the repo, edit the tfvars file, and run terraform.
 ## Getting Started
 
  * Clone this repo
- * Install the AWS CLI
+ * Install the [awsebcli](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html)
  * `cp terraform.tfvars.example terraform.tfvars`
  * Edit `terraform.tfvars`
  * `terraform plan` to see the changes.
  * `terraform apply` to apply the changes.
- * -Command to run eb deploy-
+ * `eb init [--profile profilename]` and select the right region and environment
+ * `eb deploy`
 
 ## Notes about the hostname.
 
